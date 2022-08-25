@@ -12,9 +12,10 @@ def falling(n, k):
     """
     "*** YOUR CODE HERE ***"
     total = 1
-    while n >= k:
+    while k > 0:
         total *= n
         n -= 1
+        k -= 1
     return total
 
 
@@ -60,12 +61,17 @@ def double_eights(n):
     "*** YOUR CODE HERE ***"
     flag = 0
     while n > 0:
-        if n%10 == 8:
+        if n%10 == 8 and flag ==0:
             flag += 1
+        elif n%10 == 8 and flag ==1:
+            flag += 1
+            break
+        else:
+            flag = 0
         n //= 10
-    if flag >= 2:
-        print(True)
+    if flag == 2:
+        return True
     else:
-        print(False)
+        return False
 
 
