@@ -15,7 +15,7 @@ def lambda_curry2(func):
     3
     """
     "*** YOUR CODE HERE ***"
-    return ______
+    return lambda x: lambda y: func(x,y)
 
 
 
@@ -47,6 +47,16 @@ def count_cond(condition):
     8
     """
     "*** YOUR CODE HERE ***"
+    def count(n):
+        i = 1
+        total = 0
+        while i <= n:
+            if condition(n,i):
+                total += 1
+            i += 1
+        return  total
+    return count
+
 
 
 
@@ -82,6 +92,9 @@ def composite_identity(f, g):
     False
     """
     "*** YOUR CODE HERE ***"
+    def equal(x):
+        return compose1(f,g)(x) == compose1(g,f)(x)
+    return equal
 
 
 
@@ -112,4 +125,19 @@ def cycle(f1, f2, f3):
     19
     """
     "*** YOUR CODE HERE ***"
+    def get_times(n):
+        def cyber_cycle(x):
+            count = n
+            res = x
+            while count > 0:
+                if (n - count) % 3 == 0:
+                    res = f1(res)
+                elif (n - count) % 3 == 1:
+                    res = f2(res)
+                else:
+                    res = f3(res)
+                count -= 1
+            return res
+        return cyber_cycle
+    return get_times
 
