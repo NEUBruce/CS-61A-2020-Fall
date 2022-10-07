@@ -180,5 +180,4 @@ def make_anonymous_factorial():
     >>> check(HW_SOURCE_FILE, 'make_anonymous_factorial', ['Assign', 'AugAssign', 'FunctionDef', 'Recursion'])
     True
     """
-    return lambda n: 1 if n == 1 else lambda 
-
+    return lambda b: (lambda a, b: a(a, b))(lambda a, b: b*a(a, b-1) if b > 0 else 1,b)
